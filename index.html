@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="pt-BR"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260923-05-29a7a27","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite de Conto de Fadas</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #5f3e52;
+      --rose: #c97893;
+      --cream: #fffaf1;
+      --gold: #c89b52;
+      --deep-gold: #9a7138;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; }
+    button:focus-visible {
+      outline: 3px solid #9a7138;
+      outline-offset: 4px;
+    }
+
+    .story-shell {
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .story-shell::before,
+    .story-shell::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .story-shell::before {
+      width: 20rem;
+      height: 20rem;
+      background: rgba(255, 224, 235, .62);
+      top: -6rem;
+      right: -9rem;
+    }
+
+    .story-shell::after {
+      width: 18rem;
+      height: 18rem;
+      background: rgba(255, 246, 215, .62);
+      left: -10rem;
+      bottom: 2rem;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.2rem 1rem 2.5rem;
+    }
+
+    .star-progress {
+      display: flex;
+      justify-content: center;
+      gap: .52rem;
+      margin: .15rem auto 1.8rem;
+    }
+
+    .progress-star {
+      width: .64rem;
+      height: .64rem;
+      display: inline-block;
+      background: #e8d8d0;
+      clip-path: polygon(50% 0%, 61% 36%, 98% 36%, 68% 57%, 79% 94%, 50% 72%, 21% 94%, 32% 57%, 2% 36%, 39% 36%);
+      transition: transform .45s ease, background .45s ease, filter .45s ease;
+    }
+
+    .progress-star.active {
+      background: var(--gold);
+      transform: scale(1.42);
+      filter: drop-shadow(0 0 7px rgba(200, 155, 82, .55));
+    }
+
+    .story-step {
+      display: none;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh) - 4.7rem);
+      align-items: center;
+      justify-content: center;
+      padding: .4rem 0;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .story-step.is-active {
+      display: flex;
+      animation: sceneIn .75s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .scene-card {
+      width: 100%;
+      position: relative;
+      text-align: center;
+      padding: clamp(1.8rem, 7vw, 3.25rem) clamp(1.15rem, 7vw, 3rem);
+      border: 1px solid rgba(200, 155, 82, .2);
+      border-radius: 2rem;
+      box-shadow: 0 20px 52px rgba(132, 86, 106, .11);
+      overflow: hidden;
+    }
+
+    .scene-card::before {
+      content: "";
+      position: absolute;
+      inset: 11px;
+      border: 1px solid rgba(200, 155, 82, .2);
+      border-radius: 1.48rem;
+      pointer-events: none;
+    }
+
+    .scene-card > * { position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+
+    .fairy-title {
+      font-family: "Fraunces", serif;
+      letter-spacing: -.03em;
+      line-height: 1.13;
+      margin: 0 auto;
+      max-width: 24ch;
+    }
+
+    .scene-copy {
+      max-width: 31ch;
+      margin: 1rem auto 1.55rem;
+      line-height: 1.65;
+    }
+
+    .fairy-button {
+      border: 0;
+      border-radius: 999px;
+      min-height: 3.25rem;
+      padding: .82rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(154, 113, 56, .2);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .fairy-button:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(154, 113, 56, .27); }
+    .fairy-button:active { transform: translateY(0) scale(.98); }
+
+    .decorative-sparkle {
+      position: absolute;
+      color: var(--gold);
+      opacity: .65;
+      animation: twinkle 3.2s ease-in-out infinite;
+    }
+
+    .spark-one { top: 12%; left: 12%; }
+    .spark-two { top: 18%; right: 13%; animation-delay: .8s; }
+    .spark-three { bottom: 17%; left: 16%; animation-delay: 1.4s; }
+
+    .cloud {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      filter: blur(.2px);
+      box-shadow: 1.5rem .15rem 0 .35rem rgba(255,255,255,.63), .55rem -.65rem 0 .1rem rgba(255,255,255,.71);
+    }
+
+    .cloud-left { width: 4.8rem; height: 1.55rem; left: -1.8rem; bottom: 17%; }
+    .cloud-right { width: 5.2rem; height: 1.6rem; right: -2.3rem; top: 20%; }
+
+    .gift-zone {
+      position: relative;
+      width: 12.8rem;
+      height: 11.2rem;
+      margin: 1.4rem auto 1.8rem;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      display: block;
+    }
+
+    .gift-zone:focus-visible { outline: 3px solid var(--deep-gold); outline-offset: 7px; border-radius: 1.5rem; }
+
+    .gift {
+      width: 8.2rem;
+      height: 6.5rem;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      border-radius: .55rem .55rem 1.1rem 1.1rem;
+      background: linear-gradient(140deg, #eab4c4, #d987a3);
+      box-shadow: inset -12px -12px 18px rgba(165, 68, 102, .12), 0 19px 23px rgba(116, 78, 94, .14);
+    }
+
+    .gift::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 50%;
+      width: 1rem;
+      transform: translateX(-50%);
+      background: #f8dfad;
+    }
+
+    .gift-lid {
+      width: 9.15rem;
+      height: 2.2rem;
+      position: absolute;
+      left: 50%;
+      bottom: 5.65rem;
+      transform: translateX(-50%);
+      border-radius: .65rem;
+      background: linear-gradient(140deg, #f0c2d0, #df93ad);
+      box-shadow: 0 5px 7px rgba(116, 78, 94, .09);
+      transition: transform .75s cubic-bezier(.2,.8,.2,1), opacity .5s ease;
+    }
+
+    .gift-lid::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1rem;
+      height: 100%;
+      transform: translateX(-50%);
+      background: #f8dfad;
+    }
+
+    .gift-bow {
+      position: absolute;
+      width: 3.45rem;
+      height: 1.8rem;
+      left: 50%;
+      bottom: 7.3rem;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .gift-bow::before, .gift-bow::after {
+      content: "";
+      position: absolute;
+      width: 2rem;
+      height: 1.4rem;
+      top: .2rem;
+      border: .45rem solid #f8dfad;
+      border-radius: 75% 30% 75% 30%;
+    }
+
+    .gift-bow::before { left: 0; transform: rotate(20deg); }
+    .gift-bow::after { right: 0; transform: scaleX(-1) rotate(20deg); }
+
+    .gift-zone.is-open .gift-lid { transform: translateX(-50%) translateY(-3.6rem) rotate(-9deg); opacity: .75; }
+    .gift-zone.is-open .gift { animation: giftGlow .9s ease both; }
+
+    .magic-burst {
+      position: absolute;
+      width: 10rem;
+      height: 10rem;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%) scale(.35);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,250,220,.93) 0%, rgba(255,226,174,.32) 35%, transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .gift-zone.is-open .magic-burst { animation: burst .9s ease-out forwards; }
+
+    .crown {
+      width: 6.3rem;
+      height: 4.7rem;
+      margin: .2rem auto 1.2rem;
+      color: var(--gold);
+      filter: drop-shadow(0 7px 8px rgba(171, 124, 50, .19));
+      animation: float 3.6s ease-in-out infinite;
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 1.6rem;
+      height: 1.25rem;
+      opacity: .7;
+      color: #d888a3;
+      animation: flutter 4.4s ease-in-out infinite;
+    }
+
+    .butterfly::before, .butterfly::after {
+      content: "";
+      position: absolute;
+      width: .9rem;
+      height: 1.15rem;
+      border: 1px solid currentColor;
+      background: rgba(255, 236, 242, .8);
+      top: 0;
+    }
+
+    .butterfly::before { border-radius: 90% 15% 75% 20%; left: 0; transform: rotate(-24deg); }
+    .butterfly::after { border-radius: 15% 90% 20% 75%; right: 0; transform: rotate(24deg); }
+    .butterfly-a { top: 16%; left: 11%; }
+    .butterfly-b { right: 10%; bottom: 17%; animation-delay: 1.3s; }
+
+    .invite-card {
+      max-width: 30rem;
+      margin: 1.25rem auto 1.5rem;
+      border-radius: 1.5rem;
+      padding: 1.75rem 1.2rem;
+      border: 1px solid rgba(200, 155, 82, .55);
+      box-shadow: inset 0 0 0 8px rgba(255,255,255,.45), 0 15px 32px rgba(137, 94, 104, .09);
+    }
+
+    .invite-rule {
+      width: 4.4rem;
+      height: 1px;
+      margin: 1rem auto;
+      background: linear-gradient(to right, transparent, #c89b52, transparent);
+    }
+
+    .invite-name {
+      font-family: "Fraunces", serif;
+      line-height: 1.1;
+      margin: .15rem auto .85rem;
+      overflow-wrap: anywhere;
+    }
+
+    .invite-detail {
+      margin: .45rem 0;
+      line-height: 1.5;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .8rem;
+      max-width: 31rem;
+      margin: 1.45rem auto;
+      text-align: left;
+    }
+
+    .detail-block {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: 1rem;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(200, 155, 82, .2);
+      box-shadow: 0 8px 20px rgba(137, 94, 104, .05);
+    }
+
+    .detail-icon {
+      width: 2.45rem;
+      height: 2.45rem;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #fff0e9;
+      color: var(--deep-gold);
+    }
+
+    .detail-label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: .15rem;
+    }
+
+    .location-placeholder {
+      width: 100%;
+      max-width: 31rem;
+      margin: 0 auto 1.2rem;
+      min-height: 3.1rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(154, 113, 56, .48);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .restart-button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      padding: .65rem .8rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    @keyframes sceneIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes twinkle { 50% { opacity: 1; transform: scale(1.35) rotate(20deg); } }
+    @keyframes float { 50% { transform: translateY(-8px) rotate(1deg); } }
+    @keyframes flutter { 50% { transform: translate(12px, -11px) rotate(10deg); } }
+    @keyframes burst { 35% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) scale(1.75); } }
+    @keyframes giftGlow { 50% { box-shadow: inset -12px -12px 18px rgba(165, 68, 102, .12), 0 0 0 13px rgba(255,239,193,.38), 0 0 30px rgba(255,225,166,.9); } }
+
+    @media (min-width: 640px) {
+      .main-content { padding: 1.8rem 1.5rem 3.5rem; }
+      .details-grid { grid-template-columns: repeat(3, 1fr); }
+      .detail-block { align-items: flex-start; min-height: 8rem; flex-direction: column; gap: .6rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/94916171342f3214.editing_sdk.js" type="text/javascript" integrity="sha512-iD6yxTksfey/7N3Df0f52UtQsuvEgQYXQKioLwfyua/wCe7br8wUuc/pDNnGdXhJ/6CJKJ9sPcWHBNlAjOMhEQ=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: linear-gradient(160deg, rgb(255, 253, 248) 0%, rgb(255, 243, 245) 45%, rgb(249, 243, 232) 100%);">
+  <div class="story-shell">
+   <main class="main-content" aria-live="polite">
+    <nav class="star-progress" aria-label="Progresso da história"><span class="progress-star active" aria-hidden="true"></span> <span class="progress-star" aria-hidden="true"></span> <span class="progress-star" aria-hidden="true"></span> <span class="progress-star" aria-hidden="true"></span> <span class="progress-star" aria-hidden="true"></span> <span class="progress-star" aria-hidden="true"></span>
+    </nav>
+    <section class="story-step is-active" data-step="0" aria-label="A caixinha de surpresa">
+     <div data-template-id="mystery-scene" class="scene-card canva-section" style="background: linear-gradient(145deg, rgb(255, 253, 251) 0%, rgb(255, 245, 245) 100%);"><span class="cloud cloud-left" aria-hidden="true"></span> <span class="cloud cloud-right" aria-hidden="true"></span> <span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✧</span> <span class="decorative-sparkle spark-three" aria-hidden="true">✦</span>
+      <p data-template-id="mystery-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">Um pequeno mistério</p>
+      <h1 data-template-id="mystery-title" class="fairy-title canva-text" style="color: rgb(95, 62, 82); font-weight: 500; font-style: normal; font-size: 32px;">Há uma surpresa esperando por você...</h1><button id="gift-button" class="gift-zone" type="button" aria-label="Abrir a caixinha de surpresa"> <span class="magic-burst" aria-hidden="true"></span> <span class="gift-lid" aria-hidden="true"></span> <span class="gift-bow" aria-hidden="true"></span> <span class="gift" aria-hidden="true"></span> </button>
+      <p data-template-id="mystery-copy" class="scene-copy canva-text" style="color: rgb(121, 89, 106); font-weight: 400; font-style: normal; font-size: 16px;">Toque na caixinha e deixe a magia começar.</p><button id="open-button" data-template-id="open-button" class="fairy-button canva-button" type="button" style="background: rgb(201, 120, 147); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Abrir a caixinha</button>
+     </div>
+    </section>
+    <section class="story-step" data-step="1" aria-label="Curiosidade" hidden="">
+     <div data-template-id="curiosity-scene" class="scene-card canva-section" style="background: linear-gradient(145deg, rgb(255, 250, 244) 0%, rgb(255, 245, 248) 100%);"><span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✧</span> <span class="cloud cloud-right" aria-hidden="true"></span>
+      <p data-template-id="curiosity-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">Capítulo um</p>
+      <h2 data-template-id="curiosity-title" class="fairy-title canva-text" style="color: rgb(95, 62, 82); font-weight: 500; font-style: normal; font-size: 24px;">Era uma vez uma pequena estrela...</h2>
+      <p data-template-id="curiosity-copy" class="scene-copy canva-text" style="color: rgb(121, 89, 106); font-weight: 400; font-style: normal; font-size: 16px;">Uma luz doce e delicada que chegou para transformar cada dia em encanto.</p><button id="continue-button" data-template-id="continue-button" class="fairy-button canva-button" type="button" style="background: rgb(201, 120, 147); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Continuar a história</button>
+     </div>
+    </section>
+    <section class="story-step" data-step="2" aria-label="Magia" hidden="">
+     <div data-template-id="magic-scene" class="scene-card canva-section" style="background: linear-gradient(145deg, rgb(253, 251, 247) 0%, rgb(247, 243, 255) 100%);"><span class="cloud cloud-left" aria-hidden="true"></span> <span class="cloud cloud-right" aria-hidden="true"></span> <span class="butterfly butterfly-a" aria-hidden="true"></span> <span class="butterfly butterfly-b" aria-hidden="true"></span> <span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✦</span>
+      <svg class="crown" viewBox="0 0 150 110" aria-hidden="true"><path d="M22 84 33 25l30 31L75 12l13 44 29-31 11 59H22Z" fill="currentColor" opacity=".88"></path> <path d="M22 87h106v12H22z" fill="currentColor"></path> <circle cx="75" cy="32" r="5" fill="#fff7dc"></circle>
+      </svg>
+      <p data-template-id="magic-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">Um toque de magia</p>
+      <h2 data-template-id="magic-title" class="fairy-title canva-text" style="color: rgb(95, 62, 82); font-weight: 500; font-style: normal; font-size: 24px;">Ela chegou para iluminar todos os nossos dias.</h2>
+      <p data-template-id="magic-copy" class="scene-copy canva-text" style="color: rgb(121, 89, 106); font-weight: 400; font-style: normal; font-size: 16px;">Entre flores, nuvens e brilho dourado, uma história especial começa a florescer.</p><button id="magic-button" data-template-id="magic-button" class="fairy-button canva-button" type="button" style="background: rgb(200, 155, 82); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Descobrir a magia</button>
+     </div>
+    </section>
+    <section class="story-step" data-step="3" aria-label="Revelação" hidden="">
+     <div data-template-id="reveal-scene" class="scene-card canva-section" style="background: radial-gradient(circle at center top, rgb(255, 249, 222) 0%, rgb(255, 247, 245) 48%, rgb(255, 253, 251) 100%);"><span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-three" aria-hidden="true">✧</span>
+      <p data-template-id="reveal-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">A revelação</p>
+      <h2 data-template-id="reveal-title" class="fairy-title canva-text" style="color: rgb(95, 62, 82); font-weight: 500; font-style: normal; font-size: 24px;">Você está convidado para uma celebração muito especial</h2>
+      <p data-template-id="reveal-subtitle" class="scene-copy canva-text" style="color: rgb(165, 91, 120); font-weight: 500; font-style: normal; font-size: 20px;">O primeiro aniversário de [Nome da bebê]</p><button id="invite-button" data-template-id="invite-button" class="fairy-button canva-button" type="button" style="background: rgb(201, 120, 147); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Ver o convite</button>
+     </div>
+    </section>
+    <section class="story-step" data-step="4" aria-label="Convite" hidden="">
+     <div data-template-id="invitation-scene" class="scene-card canva-section" style="background: linear-gradient(145deg, rgb(255, 253, 249) 0%, rgb(255, 242, 241) 100%);"><span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✧</span>
+      <p data-template-id="invitation-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">Com carinho</p>
+      <article data-template-id="invitation-card" class="invite-card canva-card" style="background: rgb(255, 250, 241);"><span aria-hidden="true" style="color:#c89b52;font-size:1.25rem;">✦</span>
+       <h2 data-template-id="invitation-name" class="invite-name canva-text" style="color: rgb(165, 91, 120); font-weight: 500; font-style: normal; font-size: 24px;">[Nome da bebê]</h2>
+       <div class="invite-rule" aria-hidden="true"></div>
+       <p data-template-id="invitation-date" class="invite-detail canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Data da festa]</p>
+       <p data-template-id="invitation-time" class="invite-detail canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Horário]</p>
+       <p data-template-id="invitation-location" class="invite-detail canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Local da festa]</p>
+      </article>
+      <p data-template-id="invitation-copy" class="scene-copy canva-text" style="color: rgb(121, 89, 106); font-weight: 400; font-style: italic; font-size: 16px;">Sua presença tornará este dia ainda mais mágico.</p><button id="details-button" data-template-id="details-button" class="fairy-button canva-button" type="button" style="background: rgb(200, 155, 82); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Ver detalhes da festa</button>
+     </div>
+    </section>
+    <section class="story-step" data-step="5" aria-label="Detalhes da festa" hidden="">
+     <div data-template-id="details-scene" class="scene-card canva-section" style="background: linear-gradient(145deg, rgb(255, 253, 249) 0%, rgb(255, 247, 238) 100%);"><span class="decorative-sparkle spark-one" aria-hidden="true">✦</span> <span class="decorative-sparkle spark-two" aria-hidden="true">✧</span>
+      <p data-template-id="details-eyebrow" class="eyebrow canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">Guarde este momento</p>
+      <h2 data-template-id="details-title" class="fairy-title canva-text" style="color: rgb(95, 62, 82); font-weight: 500; font-style: normal; font-size: 24px;">Detalhes da festa</h2>
+      <div class="details-grid">
+       <article data-template-id="date-block" class="detail-block canva-card" style="background: rgb(255, 255, 255);"><span class="detail-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span>
+        <div><span data-template-id="date-label" class="detail-label canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.08rem;">Data</span> <span data-template-id="date-value" class="canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Data da festa]</span>
+        </div>
+       </article>
+       <article data-template-id="time-block" class="detail-block canva-card" style="background: rgb(255, 255, 255);"><span class="detail-icon" aria-hidden="true"><i data-lucide="clock-3"></i></span>
+        <div><span data-template-id="time-label" class="detail-label canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.08rem;">Horário</span> <span data-template-id="time-value" class="canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Horário]</span>
+        </div>
+       </article>
+       <article data-template-id="place-block" class="detail-block canva-card" style="background: rgb(255, 255, 255);"><span class="detail-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
+        <div><span data-template-id="place-label" class="detail-label canva-text" style="color: rgb(154, 113, 56); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.08rem;">Local</span> <span data-template-id="place-value" class="canva-text" style="color: rgb(95, 62, 82); font-weight: 600; font-style: normal; font-size: 16px;">[Local da festa]</span>
+        </div>
+       </article>
+      </div>
+      <div data-template-id="location-placeholder" class="location-placeholder canva-button" aria-disabled="true" style="background: rgb(255, 250, 241); color: rgb(154, 113, 56);"><i data-lucide="map" aria-hidden="true"></i> <span data-template-id="location-placeholder-text" class="canva-text" style="color: rgb(154, 113, 56); font-weight: 600; font-style: normal; font-size: 16px;">Adicionar localização</span>
+      </div>
+      <p data-template-id="details-copy" class="scene-copy canva-text" style="color: rgb(121, 89, 106); font-weight: 500; font-style: normal; font-size: 19px;">Será uma alegria celebrar este momento com você.</p><button id="restart-button" data-template-id="restart-button" class="restart-button canva-button" type="button" style="color: rgb(154, 113, 56); font-weight: 600; font-style: normal; font-size: 16px;">Recomeçar a história</button>
+     </div>
+    </section>
+   </main>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      const steps = Array.from(document.querySelectorAll(".story-step"));
+      const progressStars = Array.from(document.querySelectorAll(".progress-star"));
+      const giftButton = document.getElementById("gift-button");
+      let currentStep = 0;
+      let opening = false;
+
+      function showStep(nextStep) {
+        steps[currentStep].classList.remove("is-active");
+        steps[currentStep].hidden = true;
+
+        currentStep = nextStep;
+        const nextScene = steps[currentStep];
+        nextScene.hidden = false;
+
+        requestAnimationFrame(() => {
+          nextScene.classList.add("is-active");
+          nextScene.querySelector("button")?.focus({ preventScroll: true });
+        });
+
+        progressStars.forEach((star, index) => {
+          star.classList.toggle("active", index <= currentStep);
+        });
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function openGift() {
+        if (opening) return;
+        opening = true;
+        giftButton.classList.add("is-open");
+        setTimeout(() => {
+          showStep(1);
+          giftButton.classList.remove("is-open");
+          opening = false;
+        }, 850);
+      }
+
+      giftButton.addEventListener("click", openGift);
+      document.getElementById("open-button").addEventListener("click", openGift);
+      document.getElementById("continue-button").addEventListener("click", () => showStep(2));
+      document.getElementById("magic-button").addEventListener("click", () => showStep(3));
+      document.getElementById("invite-button").addEventListener("click", () => showStep(4));
+      document.getElementById("details-button").addEventListener("click", () => showStep(5));
+
+      document.getElementById("restart-button").addEventListener("click", () => {
+        steps[currentStep].classList.remove("is-active");
+        steps[currentStep].hidden = true;
+        currentStep = 0;
+        steps[0].hidden = false;
+        requestAnimationFrame(() => steps[0].classList.add("is-active"));
+        progressStars.forEach((star, index) => star.classList.toggle("active", index === 0));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("gift-button").focus({ preventScroll: true });
+      });
+    });
+  </script>
+ 
+</body></html>
