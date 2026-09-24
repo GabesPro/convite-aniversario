@@ -235,7 +235,10 @@ document
 ========================================= */
 
 const confirmationForm =
-    document.getElementById("confirmationForm");
+    document.getElementById(
+        "confirmationForm"
+    );
+
 
 confirmationForm.addEventListener(
     "submit",
@@ -253,10 +256,10 @@ confirmationForm.addEventListener(
                 "peopleQuantity"
             ).value;
 
-        const statusElement =
+        const status =
             document.querySelector(
                 'input[name="status"]:checked'
-            );
+            ).value;
 
         const observation =
             document.getElementById(
@@ -273,52 +276,25 @@ confirmationForm.addEventListener(
             return;
         }
 
-
-        if (!statusElement) {
-
-            alert(
-                "Selecione se você irá comparecer."
-            );
-
-            return;
-        }
-
-
-        const status =
-            statusElement.value;
-
-
         const confirmation = {
-
             nome: name,
-
-            quantidade_pessoas:
-                Number(people),
-
-            status: status,
-
+            quantidade_pessoas: Number(people),
+            status,
             observacao: observation
-
         };
-
 
         const submitButton =
             confirmationForm.querySelector(
                 'button[type="submit"]'
             );
 
-
         submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
 
-        submitButton.textContent =
-            "Enviando...";
-
-
-        const { error } =
+              const { error } =
             await supabaseClient
                 .from("confirmacoes")
                 .insert(confirmation);
-
 
         if (error) {
 
@@ -339,13 +315,11 @@ confirmationForm.addEventListener(
             return;
         }
 
-
-        showConfirmationSuccess(
-            confirmation
-        );
+        showConfirmationSuccess(confirmation);
 
     }
 );
+
 
 /* =========================================
    SUCESSO
