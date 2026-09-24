@@ -235,10 +235,7 @@ document
 ========================================= */
 
 const confirmationForm =
-    document.getElementById(
-        "confirmationForm"
-    );
-
+    document.getElementById("confirmationForm");
 
 confirmationForm.addEventListener(
     "submit",
@@ -256,10 +253,10 @@ confirmationForm.addEventListener(
                 "peopleQuantity"
             ).value;
 
-        const status =
+        const statusElement =
             document.querySelector(
                 'input[name="status"]:checked'
-            ).value;
+            );
 
         const observation =
             document.getElementById(
@@ -276,48 +273,79 @@ confirmationForm.addEventListener(
             return;
         }
 
+
+        if (!statusElement) {
+
+            alert(
+                "Selecione se você irá comparecer."
+            );
+
+            return;
+        }
+
+
+        const status =
+            statusElement.value;
+
+
         const confirmation = {
+
             nome: name,
-            quantidade_pessoas: Number(people),
-            status,
+
+            quantidade_pessoas:
+                Number(people),
+
+            status: status,
+
             observacao: observation
+
         };
+
 
         const submitButton =
             confirmationForm.querySelector(
                 'button[type="submit"]'
             );
 
-        submitButton.disabled = true;
-        submitButton.textContent = "Enviando...";
 
-        const {
-    error
-} = await supabaseClient
-    .from("confirmacoes")
-    .insert(confirmation);
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Enviando...";
+
+
+        const { error } =
+            await supabaseClient
+                .from("confirmacoes")
+                .insert(confirmation);
+
 
         if (error) {
 
-    console.error(
-        "Erro ao salvar confirmação:",
-        error
-    );
+            console.error(
+                "Erro ao salvar confirmação:",
+                error
+            );
 
-    alert(
-        "Não foi possível enviar sua confirmação. Tente novamente."
-    );
+            alert(
+                "Não foi possível enviar sua confirmação. Tente novamente."
+            );
 
-    submitButton.disabled = false;
-    submitButton.textContent =
-        "💗 Confirmar presença";
+            submitButton.disabled = false;
 
-    return;
-}
+            submitButton.textContent =
+                "💗 Confirmar presença";
 
-showConfirmationSuccess();
+            return;
+        }
+
+
+        showConfirmationSuccess(
+            confirmation
+        );
+
+    }
 );
-
 
 /* =========================================
    SUCESSO
