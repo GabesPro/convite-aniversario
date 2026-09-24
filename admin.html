@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Administração | Convite</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+<body>
+
+<!-- =========================================
+     LOGIN
+========================================= -->
+
+<section
+    id="loginScreen"
+    class="login-screen"
+>
+
+    <div class="login-card">
+
+        <div class="login-icon">
+            🎀
+        </div>
+
+        <span class="login-label">
+            ÁREA RESTRITA
+        </span>
+
+        <h1>
+            Área do Organizador
+        </h1>
+
+        <p>
+            Entre para gerenciar as confirmações
+            da festa.
+        </p>
+
+        <form id="loginForm">
+
+            <label>
+
+                E-mail
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="seu@email.com"
+                    required
+                >
+
+            </label>
+
+            <label>
+
+                Senha
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+            </label>
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Entrar
+            </button>
+
+            <p
+                id="loginError"
+                class="error-message hidden"
+            >
+                E-mail ou senha incorretos.
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     PAINEL
+========================================= -->
+
+<div
+    id="adminPanel"
+    class="admin-panel hidden"
+>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🎀
+            </div>
+
+            <div>
+
+                <strong>
+                    Festa
+                </strong>
+
+                <span>
+                    Painel administrativo
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button
+                class="sidebar-link active"
+                data-section="dashboard"
+            >
+                📊
+                Dashboard
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="guests"
+            >
+                👥
+                Convidados
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="settings"
+            >
+                ⚙️
+                Configurações
+            </button>
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+        >
+            🚪 Sair
+        </button>
+
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span>
+                    Painel de controle
+                </span>
+
+                <h1 id="pageTitle">
+                    Dashboard da Festa 🎀
+                </h1>
+
+            </div>
+
+            <div class="admin-user">
+
+                <div class="user-avatar">
+                    👤
+                </div>
+
+                <div>
+
+                    <strong>
+                        Organizador
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             DASHBOARD
+        ====================================== -->
+
+        <section
+            id="dashboardSection"
+            class="admin-section"
+        >
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            CONVIDADOS
+                        </span>
+
+                        <strong id="totalGuests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>
+                            CONFIRMADOS
+                        </span>
+
+                        <strong id="confirmedGuests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        ❌
+                    </div>
+
+                    <div>
+
+                        <span>
+                            NÃO IRÃO
+                        </span>
+
+                        <strong id="declinedGuests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            AGUARDANDO
+                        </span>
+
+                        <strong id="pendingGuests">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card featured">
+
+                    <div class="stat-icon">
+                        🎉
+                    </div>
+
+                    <div>
+
+                        <span>
+                            TOTAL DE PESSOAS
+                        </span>
+
+                        <strong id="totalPeople">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- RESUMO -->
+
+            <div class="dashboard-grid">
+
+                <div class="panel-card">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span>
+                                Resumo
+                            </span>
+
+                            <h2>
+                                Situação das confirmações
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-list">
+
+                        <div class="progress-item">
+
+                            <div>
+
+                                <span>
+                                    Confirmados
+                                </span>
+
+                                <strong id="confirmedPercent">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress">
+                                <span
+                                    id="confirmedProgress"
+                                ></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div>
+
+                                <span>
+                                    Não irão
+                                </span>
+
+                                <strong id="declinedPercent">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress">
+                                <span
+                                    id="declinedProgress"
+                                ></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div>
+
+                                <span>
+                                    Aguardando
+                                </span>
+
+                                <strong id="pendingPercent">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress">
+                                <span
+                                    id="pendingProgress"
+                                ></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ÚLTIMAS CONFIRMAÇÕES -->
+
+                <div class="panel-card">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span>
+                                Atividade recente
+                            </span>
+
+                            <h2>
+                                Últimas confirmações
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="recentGuests"
+                        class="recent-list"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONVIDADOS
+        ====================================== -->
+
+        <section
+            id="guestsSection"
+            class="admin-section hidden"
+        >
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <span>
+                        Gerenciamento
+                    </span>
+
+                    <h2>
+                        Lista de convidados
+                    </h2>
+
+                </div>
+
+                <div class="toolbar-actions">
+
+                    <button
+                        id="exportCsv"
+                        class="secondary-button"
+                    >
+                        📊 Exportar CSV
+                    </button>
+
+                    <button
+                        id="printReport"
+                        class="primary-button"
+                    >
+                        📄 Relatório
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filters-card">
+
+                <div class="search-box">
+
+                    🔎
+
+                    <input
+                        type="text"
+                        id="searchGuest"
+                        placeholder="Pesquisar por nome..."
+                    >
+
+                </div>
+
+
+                <div class="filter-buttons">
+
+                    <button
+                        class="filter-button active"
+                        data-filter="todos"
+                    >
+                        Todos
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="confirmado"
+                    >
+                        Confirmados
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="nao"
+                    >
+                        Não irão
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="aguardando"
+                    >
+                        Aguardando
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABELA -->
+
+            <div class="table-card">
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Nome
+                                </th>
+
+                                <th>
+                                    Pessoas
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Data
+                                </th>
+
+                                <th>
+                                    Ações
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="guestTable"
+                        ></tbody>
+
+                    </table>
+
+                </div>
+
+                <div
+                    id="emptyGuests"
+                    class="empty-state hidden"
+                >
+                    <div>
+                        💌
+                    </div>
+
+                    <h3>
+                        Nenhum convidado encontrado
+                    </h3>
+
+                    <p>
+                        As confirmações aparecerão aqui.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONFIGURAÇÕES
+        ====================================== -->
+
+        <section
+            id="settingsSection"
+            class="admin-section hidden"
+        >
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <span>
+                        Personalização
+                    </span>
+
+                    <h2>
+                        Configurações do convite
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <form id="settingsForm">
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Nome da bebê
+
+                            <input
+                                type="text"
+                                id="configName"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Idade
+
+                            <input
+                                type="text"
+                                id="configAge"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Data
+
+                            <input
+                                type="text"
+                                id="configDate"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Horário
+
+                            <input
+                                type="text"
+                                id="configTime"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Local
+
+                            <input
+                                type="text"
+                                id="configLocation"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Endereço
+
+                            <input
+                                type="text"
+                                id="configAddress"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Link Google Maps
+
+                            <input
+                                type="url"
+                                id="configMaps"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            WhatsApp
+
+                            <input
+                                type="text"
+                                id="configWhatsapp"
+                            >
+
+                        </label>
+
+                    </div>
+
+
+                    <label>
+
+                        Mensagem do convite
+
+                        <textarea
+                            id="configMessage"
+                            rows="7"
+                        ></textarea>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        💾 Salvar configurações
+                    </button>
+
+                    <span
+                        id="settingsSaved"
+                        class="saved-message hidden"
+                    >
+                        ✓ Configurações salvas!
+                    </span>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     MODAL EDIÇÃO
+========================================= -->
+
+<div
+    id="editModal"
+    class="modal hidden"
+>
+
+    <div class="modal-card">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <span>
+            Editar confirmação
+        </span>
+
+        <h2>
+            Dados do convidado
+        </h2>
+
+
+        <form id="editForm">
+
+            <input
+                type="hidden"
+                id="editId"
+            >
+
+
+            <label>
+
+                Nome
+
+                <input
+                    type="text"
+                    id="editName"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+
+                Quantidade de pessoas
+
+                <input
+                    type="number"
+                    id="editPeople"
+                    min="1"
+                    max="20"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+
+                Status
+
+                <select id="editStatus">
+
+                    <option value="confirmado">
+                        Confirmado
+                    </option>
+
+                    <option value="nao">
+                        Não irá
+                    </option>
+
+                    <option value="aguardando">
+                        Aguardando
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Observação
+
+                <textarea
+                    id="editObservation"
+                    rows="4"
+                ></textarea>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Salvar alterações
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     MODAL EXCLUSÃO
+========================================= -->
+
+<div
+    id="deleteModal"
+    class="modal hidden"
+>
+
+    <div class="modal-card delete-card">
+
+        <div class="delete-icon">
+            🗑️
+        </div>
+
+        <h2>
+            Excluir convidado?
+        </h2>
+
+        <p>
+            Tem certeza que deseja excluir este convidado?
+            Essa ação não poderá ser desfeita.
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                id="cancelDelete"
+                class="secondary-button"
+            >
+                Cancelar
+            </button>
+
+            <button
+                id="confirmDelete"
+                class="danger-button"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+</html>
