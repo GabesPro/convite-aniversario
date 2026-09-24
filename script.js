@@ -291,14 +291,11 @@ confirmationForm.addEventListener(
         submitButton.disabled = true;
         submitButton.textContent = "Enviando...";
 
-        const {
-            data,
-            error
-        } = await supabaseClient
-            .from("confirmacoes")
-            .insert(confirmation)
-            .select()
-            .single();
+       const {
+    error
+} = await supabaseClient
+    .from("confirmacoes")
+    .insert(confirmation);
 
         if (error) {
 
