@@ -299,24 +299,23 @@ confirmationForm.addEventListener(
 
         if (error) {
 
-            console.error(
-                "Erro ao salvar confirmação:",
-                error
-            );
+    console.error(
+        "Erro ao salvar confirmação:",
+        error
+    );
 
-            alert(
-                "Não foi possível enviar sua confirmação. Tente novamente."
-            );
+    alert(
+        "Não foi possível enviar sua confirmação. Tente novamente."
+    );
 
-            submitButton.disabled = false;
-            submitButton.textContent =
-                "💗 Confirmar presença";
+    submitButton.disabled = false;
+    submitButton.textContent =
+        "💗 Confirmar presença";
 
-            return;
-        }
+    return;
+}
 
-        showConfirmationSuccess(data);
-    }
+showConfirmationSuccess();
 );
 
 
