@@ -291,7 +291,7 @@ confirmationForm.addEventListener(
         submitButton.disabled = true;
         submitButton.textContent = "Enviando...";
 
-       const {
+        const {
     error
 } = await supabaseClient
     .from("confirmacoes")
