@@ -242,10 +242,9 @@ const confirmationForm =
 
 confirmationForm.addEventListener(
     "submit",
-    (event) => {
+    async (event) => {
 
         event.preventDefault();
-
 
         const name =
             document.getElementById(
@@ -277,68 +276,49 @@ confirmationForm.addEventListener(
             return;
         }
 
-
-        /*
-         * VERSÃO TEMPORÁRIA
-         *
-         * Aqui futuramente será feita
-         * a chamada para o Supabase.
-         */
-
         const confirmation = {
-
-            id: Date.now(),
-
             nome: name,
-
-            quantidade_pessoas:
-                Number(people),
-
+            quantidade_pessoas: Number(people),
             status,
-
-            observacao:
-                observation,
-
-            created_at:
-                new Date().toISOString()
-
+            observacao: observation
         };
 
+        const submitButton =
+            confirmationForm.querySelector(
+                'button[type="submit"]'
+            );
 
-        console.log(
-            "CONFIRMAÇÃO:",
-            confirmation
-        );
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
 
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("confirmacoes")
+            .insert(confirmation)
+            .select()
+            .single();
 
-        /*
-         * Salva temporariamente
-         * somente para testes.
-         */
+        if (error) {
 
-        const confirmations =
-            JSON.parse(
-                localStorage.getItem(
-                    "confirmacoes"
-                )
-            ) || [];
+            console.error(
+                "Erro ao salvar confirmação:",
+                error
+            );
 
+            alert(
+                "Não foi possível enviar sua confirmação. Tente novamente."
+            );
 
-        confirmations.push(
-            confirmation
-        );
+            submitButton.disabled = false;
+            submitButton.textContent =
+                "💗 Confirmar presença";
 
+            return;
+        }
 
-        localStorage.setItem(
-            "confirmacoes",
-            JSON.stringify(confirmations)
-        );
-
-
-        showConfirmationSuccess(
-            confirmation
-        );
-
+        showConfirmationSuccess(data);
     }
 );
 

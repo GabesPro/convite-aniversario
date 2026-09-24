@@ -2,10 +2,7 @@
    DADOS
 ========================================= */
 
-let guests =
-    JSON.parse(
-        localStorage.getItem("confirmacoes")
-    ) || [];
+let guests = [];
 
 let currentFilter = "todos";
 
@@ -51,70 +48,61 @@ const TEST_PASSWORD =
 
 loginForm.addEventListener(
     "submit",
-    (event) => {
+    async (event) => {
 
         event.preventDefault();
 
         const email =
             document.getElementById(
                 "loginEmail"
-            ).value;
+            ).value.trim();
 
         const password =
             document.getElementById(
                 "loginPassword"
             ).value;
 
-
-        if (
-            email === TEST_EMAIL &&
-            password === TEST_PASSWORD
-        ) {
-
-            sessionStorage.setItem(
-                "adminLogged",
-                "true"
+        const loginError =
+            document.getElementById(
+                "loginError"
             );
 
-            loginScreen.classList.add(
+        loginError.classList.add("hidden");
+
+        const button =
+            loginForm.querySelector(
+                'button[type="submit"]'
+            );
+
+        button.disabled = true;
+        button.textContent = "Entrando...";
+
+        const {
+            error
+        } = await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        button.disabled = false;
+        button.textContent = "Entrar";
+
+        if (error) {
+
+            console.error(
+                "Erro no login:",
+                error
+            );
+
+            loginError.textContent =
+                "E-mail ou senha incorretos.";
+
+            loginError.classList.remove(
                 "hidden"
             );
 
-            adminPanel.classList.remove(
-                "hidden"
-            );
-
-            loadDashboard();
-
-        } else {
-
-            document
-                .getElementById(
-                    "loginError"
-                )
-                .classList.remove(
-                    "hidden"
-                );
-
+            return;
         }
-
-    }
-);
-
-
-/* =========================================
-   VERIFICAR LOGIN
-========================================= */
-
-function checkLogin() {
-
-    const logged =
-        sessionStorage.getItem(
-            "adminLogged"
-        );
-
-
-    if (logged === "true") {
 
         loginScreen.classList.add(
             "hidden"
@@ -124,10 +112,33 @@ function checkLogin() {
             "hidden"
         );
 
-        loadDashboard();
-
+        await loadDashboard();
     }
+);
 
+
+/* =========================================
+   VERIFICAR LOGIN
+========================================= */
+
+async function checkLogin() {
+
+    const {
+        data
+    } = await supabaseClient.auth.getSession();
+
+    if (data.session) {
+
+        loginScreen.classList.add(
+            "hidden"
+        );
+
+        adminPanel.classList.remove(
+            "hidden"
+        );
+
+        await loadDashboard();
+    }
 }
 
 checkLogin();
@@ -141,11 +152,9 @@ document
     .getElementById("logoutButton")
     .addEventListener(
         "click",
-        () => {
+        async () => {
 
-            sessionStorage.removeItem(
-                "adminLogged"
-            );
+            await supabaseClient.auth.signOut();
 
             location.reload();
 
@@ -256,19 +265,36 @@ navigationLinks.forEach(
    DASHBOARD
 ========================================= */
 
-function loadDashboard() {
+async function loadDashboard() {
 
-    guests =
-        JSON.parse(
-            localStorage.getItem(
-                "confirmacoes"
-            )
-        ) || [];
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("confirmacoes")
+        .select("*")
+        .order("created_at", {
+            ascending: false
+        });
 
+    if (error) {
+
+        console.error(
+            "Erro ao carregar confirmações:",
+            error
+        );
+
+        alert(
+            "Não foi possível carregar as confirmações."
+        );
+
+        return;
+    }
+
+    guests = data || [];
 
     const total =
         guests.length;
-
 
     const confirmed =
         guests.filter(
@@ -277,7 +303,6 @@ function loadDashboard() {
                 "confirmado"
         );
 
-
     const declined =
         guests.filter(
             guest =>
@@ -285,14 +310,12 @@ function loadDashboard() {
                 "nao"
         );
 
-
     const pending =
         guests.filter(
             guest =>
                 guest.status ===
                 "aguardando"
         );
-
 
     const totalPeople =
         confirmed.reduce(
@@ -304,35 +327,29 @@ function loadDashboard() {
             0
         );
 
-
     document
         .getElementById("totalGuests")
         .textContent = total;
-
 
     document
         .getElementById("confirmedGuests")
         .textContent =
             confirmed.length;
 
-
     document
         .getElementById("declinedGuests")
         .textContent =
             declined.length;
-
 
     document
         .getElementById("pendingGuests")
         .textContent =
             pending.length;
 
-
     document
         .getElementById("totalPeople")
         .textContent =
             totalPeople;
-
 
     const percentage =
         value =>
@@ -341,7 +358,6 @@ function loadDashboard() {
                     value / total * 100
                 )
                 : 0;
-
 
     updateProgress(
         "confirmed",
@@ -358,9 +374,7 @@ function loadDashboard() {
         percentage(pending.length)
     );
 
-
     renderRecentGuests();
-
 }
 
 
@@ -721,10 +735,9 @@ document
     .getElementById("editForm")
     .addEventListener(
         "submit",
-        event => {
+        async event => {
 
             event.preventDefault();
-
 
             const id =
                 Number(
@@ -735,59 +748,54 @@ document
                         .value
                 );
 
-
-            const guest =
-                guests.find(
-                    item =>
-                        item.id === id
-                );
-
-
-            if (!guest) return;
-
-
-            guest.nome =
-                document
-                    .getElementById(
+            const updates = {
+                nome:
+                    document.getElementById(
                         "editName"
-                    )
-                    .value;
+                    ).value.trim(),
 
-
-            guest.quantidade_pessoas =
-                Number(
-                    document
-                        .getElementById(
+                quantidade_pessoas:
+                    Number(
+                        document.getElementById(
                             "editPeople"
-                        )
-                        .value
+                        ).value
+                    ),
+
+                status:
+                    document.getElementById(
+                        "editStatus"
+                    ).value,
+
+                observacao:
+                    document.getElementById(
+                        "editObservation"
+                    ).value.trim()
+            };
+
+            const {
+                error
+            } = await supabaseClient
+                .from("confirmacoes")
+                .update(updates)
+                .eq("id", id);
+
+            if (error) {
+
+                console.error(
+                    "Erro ao editar confirmação:",
+                    error
                 );
 
+                alert(
+                    "Não foi possível salvar as alterações."
+                );
 
-            guest.status =
-                document
-                    .getElementById(
-                        "editStatus"
-                    )
-                    .value;
-
-
-            guest.observacao =
-                document
-                    .getElementById(
-                        "editObservation"
-                    )
-                    .value;
-
-
-            saveGuests();
+                return;
+            }
 
             closeEdit();
-
+            await loadDashboard();
             renderGuests();
-
-            loadDashboard();
-
         }
     );
 
@@ -833,24 +841,33 @@ document
     .getElementById("confirmDelete")
     .addEventListener(
         "click",
-        () => {
+        async () => {
 
             if (!guestToDelete)
                 return;
 
+            const {
+                error
+            } = await supabaseClient
+                .from("confirmacoes")
+                .delete()
+                .eq("id", guestToDelete);
 
-            guests =
-                guests.filter(
-                    guest =>
-                        guest.id !==
-                        guestToDelete
+            if (error) {
+
+                console.error(
+                    "Erro ao excluir confirmação:",
+                    error
                 );
 
+                alert(
+                    "Não foi possível excluir a confirmação."
+                );
 
-            saveGuests();
+                return;
+            }
 
             guestToDelete = null;
-
 
             document
                 .getElementById(
@@ -860,11 +877,8 @@ document
                     "hidden"
                 );
 
-
+            await loadDashboard();
             renderGuests();
-
-            loadDashboard();
-
         }
     );
 
@@ -873,14 +887,7 @@ document
    SALVAR
 ========================================= */
 
-function saveGuests() {
-
-    localStorage.setItem(
-        "confirmacoes",
-        JSON.stringify(guests)
-    );
-
-}
+// As confirmações agora são salvas diretamente no Supabase.
 
 
 /* =========================================
